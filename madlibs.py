@@ -3,7 +3,7 @@ import re
 pizza = open("pizza.txt", "r")
 pizza = pizza.read()
 
-taglist = re.findall(r"\[\[(.*?)\]\]", pizza)
+taglist = re.findall(r"\[\[(.+?)\]\]", pizza)
 
 userwords = []
 
@@ -12,6 +12,10 @@ for tag in taglist:
 	userwords.append(userword)
 
 word_list = iter(userwords)
-output = re.sub(r"\[\[\w+]\]", lambda L: next(word_list), pizza, 0, re.MULTILINE)
 
-print(output)
+def takenext(x):
+    return next(word_list)
+
+testpizza = re.sub(r"\[\[.+?\]\]", takenext, testpizza, 0, re.MULTILINE)
+
+print(testpizza)
