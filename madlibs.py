@@ -8,7 +8,7 @@ taglist = re.findall(r"\[\[(.+?)\]\]", pizza)
 userwords = []
 
 for tag in taglist:
-	userword = input("Please enter a " + tag + ": ")
+	userword = input("Please enter " + tag + ": ")
 	userwords.append(userword)
 
 word_list = iter(userwords)
@@ -16,6 +16,6 @@ word_list = iter(userwords)
 def takenext(x):
     return next(word_list)
 
-testpizza = re.sub(r"\[\[.+?\]\]", takenext, testpizza, 0, re.MULTILINE)
+output = re.sub(r"\[\[(.+?)\]\]", takenext, pizza, 0, re.MULTILINE)
 
-print(testpizza)
+print(output)
