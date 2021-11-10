@@ -1,5 +1,5 @@
 import re
-import datetime
+from datetime import *
 
 filename = input("Please type in the filename with extension (e.g., sample.txt): ")
 
