@@ -11,6 +11,8 @@ if len(sys.argv) > 1:
         filename = input("File does not exist. Please try again: ")
 else:
 	filename = input("Please type in the filename with extension (e.g., sample.txt): ")
+	
+#we need to add something so the program knows what to do if a user leaves out an argument the first time, then inputs a nonexistent value the second time
     
 madlib = open(filename)
 madlib = madlib.read()
