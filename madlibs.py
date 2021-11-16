@@ -1,19 +1,18 @@
 import re
 import os
-import argparse
 import sys
 
 from datetime import *
 
 if len(sys.argv) > 1:
     filename = sys.argv[1]
-    while os.path.isfile(filename) == False:
-        filename = input("File does not exist. Please try again: ")
+    if os.path.isfile(filename) == False:
+        sys.exit("That madlib file does not exist. Please enter the command again.")
 else:
-	filename = input("Please type in the filename with extension (e.g., sample.txt): ")
-	
-#we need to add something so the program knows what to do if a user leaves out an argument the first time, then inputs a nonexistent value the second time
-    
+    filename = input("Please enter a madlib filename with extension (e.g., sample.txt): ")
+    while os.path.isfile(filename) == False:
+        filename = input("That madlib file does not exist. Please enter a different filename: ")
+
 madlib = open(filename)
 madlib = madlib.read()
 
@@ -22,8 +21,8 @@ taglist = re.findall(r"\[\[(.+?)\]\]", madlib)
 userwords = []
 
 for tag in taglist:
-	userword = input("Please enter " + tag + ": ")
-	userwords.append(userword)
+    userword = input("Please enter " + tag + ": ")
+    userwords.append(userword)
 
 word_list = iter(userwords)
 
