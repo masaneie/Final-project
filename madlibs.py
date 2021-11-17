@@ -15,6 +15,7 @@ else:
 
 madlibs = open(filename)
 madlib = madlibs.read()
+madlibs.close()
 
 taglist = re.findall(r"\[\[(.+?)\]\]", madlib)
 
