@@ -13,8 +13,8 @@ else:
     while os.path.isfile(filename) == False:
         filename = input("That madlib file does not exist. Please enter a different filename: ")
 
-madlib = open(filename)
-madlib = madlib.read()
+madlibs = open(filename)
+madlib = madlibs.read()
 
 taglist = re.findall(r"\[\[(.+?)\]\]", madlib)
 
@@ -29,8 +29,8 @@ word_list = iter(userwords)
 def takenext(x):
     return next(word_list)
 
-output = re.sub(r"\[\[(.+?)\]\]", takenext, madlib, flags=re.M)
-output = re.sub(r'(\ba\b) ([aiueo])', r'an \2', output, flags=re.I|re.M)
+output = re.sub(r"\[\[(.+?)\]\]", takenext, madlib)
+output = re.sub(r'(\ba\b) ([aiueo])', r'\1n \2', output, flags=re.I)
 
 timestamp =str(datetime.now())
 timestamp = re.sub(r"\W", r"-", timestamp) 
